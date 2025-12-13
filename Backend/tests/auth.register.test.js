@@ -10,8 +10,7 @@ describe('POST /api/auth/register', () => {
         username: 'testuser',
         email: 'test@example.com',
         password: 'Password123!',
-        fullname: { firstname: 'Test', lastname: 'User' },
-        role: 'user',
+      fullname: { firstname: 'Test', lastname: 'User' }
       });
 
     expect(res.statusCode).toBe(201);
@@ -28,8 +27,7 @@ describe('POST /api/auth/register', () => {
         username: 'testuser',
         email: 'test@example.com',
         password: 'Password123!',
-        fullname: { firstname: 'Test', lastname: 'User' },
-        role: 'user',
+      fullname: { firstname: 'Test', lastname: 'User' }
       });
 
     const res = await request(app)
@@ -38,8 +36,7 @@ describe('POST /api/auth/register', () => {
         username: 'testuser',
         email: 'test2@example.com',
         password: 'Password123!',
-        fullname: { firstname: 'Test', lastname: 'User2' },
-        role: 'user',
+      fullname: { firstname: 'Test', lastname: 'User2' }
       });
 
     expect(res.statusCode).toBe(400);
