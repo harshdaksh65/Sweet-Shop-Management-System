@@ -6,6 +6,8 @@ The **Sweets Shop Management System** is a full-stack web application designed t
 The system reduces manual record-keeping, improves inventory accuracy, and provides a smooth purchasing experience for customers.
 
 ---
+## live LINK
+  - https://sweet-shop-management-vaw3.onrender.com
 
 ## ✨ Features
 - 🔐 User Authentication (JWT-based login & signup)
