@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axiosconfig'
+import { AuthDataContext } from '../context/AuthContext'
 
 function Login() {
   const navigate = useNavigate()
+  const { refreshUser } = useContext(AuthDataContext)
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -17,6 +19,9 @@ function Login() {
         password,
       })
       console.log(response.data)
+      if (refreshUser) {
+        await refreshUser()
+      }
       navigate('/')
     } catch (error) {
       console.error('Login failed:', error)
