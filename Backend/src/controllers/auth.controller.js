@@ -40,7 +40,8 @@ async function registerUser(req, res){
     res.cookie('token', token, {
         httpOnly: true,
         secure: true,
-        maxAge: 24 * 60 * 60 * 1000
+        sameSite: 'none',
+        maxAge: 24 * 60 * 60 * 1000,
     });
 
     res.status(201).json({
@@ -87,7 +88,8 @@ async function loginUser(req, res){
     res.cookie('token', token, {
         httpOnly: true,
         secure: true,
-        maxAge: 24 * 60 * 60 * 1000
+        sameSite: 'none',
+        maxAge: 24 * 60 * 60 * 1000,
     });
     
     res.status(200).json({
