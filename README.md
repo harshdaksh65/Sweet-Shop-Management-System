@@ -96,10 +96,10 @@ The application will run on:
 ## 🖼️ Screenshots
 
 
-- Home Page  
+- Admin Home Page  
   ![Admin Home Page](screenshots/admin-home.png)
 
-- User Page  
+- User Home Page  
   ![User Home Page](screenshots/user-home-page.png)
 
 - Add / Edit Sweets  
