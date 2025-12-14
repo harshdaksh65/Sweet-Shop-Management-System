@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axiosconfig'
 import { AuthDataContext } from '../context/AuthContext'
+import { toast } from 'react-toastify'
 
 function Login() {
   const navigate = useNavigate()
@@ -25,6 +26,16 @@ function Login() {
       navigate('/')
     } catch (error) {
       console.error('Login failed:', error)
+      const status = error?.response?.status
+      const backendMessage = error?.response?.data?.message
+
+      const message =
+        backendMessage ||
+        (status === 400 || status === 401
+          ? 'Invalid credentials or user not registered.'
+          : 'Failed to login. Please try again.')
+
+      toast.error(message)
     }
   }
 

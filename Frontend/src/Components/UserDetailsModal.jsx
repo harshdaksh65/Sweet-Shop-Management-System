@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from '../api/axiosconfig'
+import { AuthDataContext } from '../context/AuthContext'
 
 function UserDetailsModal({ show, onClose, user, loading, error }) {
   if (!show) return null
+
+  const { refreshUser } = useContext(AuthDataContext)
+  const [logoutLoading, setLogoutLoading] = useState(false)
+  const [logoutError, setLogoutError] = useState(null)
+  const navigate = useNavigate()
+
+  const handleLogout = async () => {
+    try {
+      setLogoutLoading(true)
+      setLogoutError(null)
+      await axios.post('/api/auth/logout')
+      if (refreshUser) {
+        await refreshUser()
+      }
+      if (onClose) {
+        onClose()
+      }
+      navigate('/login')
+    } catch (err) {
+      setLogoutError('Failed to logout')
+      console.error('Logout failed:', err)
+    } finally {
+      setLogoutLoading(false)
+    }
+  }
 
   return (
     <div className="fixed inset-0 p-6 z-50 flex items-center justify-center bg-black/40">
@@ -12,7 +40,10 @@ function UserDetailsModal({ show, onClose, user, loading, error }) {
         >
           ✕
         </button>
-        <h2 className="text-xl font-semibold mb-4">User Details</h2>
+        <h2 className="text-xl font-semibold mb-2">User Details</h2>
+        {logoutError && (
+          <p className="text-xs text-red-500 mb-1">{logoutError}</p>
+        )}
         {loading ? (
           <p className="text-sm text-gray-500">Loading user...</p>
         ) : user ? (
@@ -58,9 +89,11 @@ function UserDetailsModal({ show, onClose, user, loading, error }) {
         )}
         <button
           type="button"
-          className="mt-4 w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-2 rounded-lg text-sm cursor-not-allowed opacity-80"
+          onClick={handleLogout}
+          disabled={logoutLoading}
+          className="mt-4 w-full bg-red-500 hover:bg-red-400 text-white font-semibold py-2 rounded-lg text-sm disabled:bg-gray-300 disabled:cursor-not-allowed cursor-pointer"
         >
-          Logout
+          {logoutLoading ? 'Logging out...' : 'Logout'}
         </button>
       </div>
     </div>

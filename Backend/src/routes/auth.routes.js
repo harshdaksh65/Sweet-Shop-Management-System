@@ -11,6 +11,7 @@ const bcrypt = require('bcrypt');
 router.post('/register',validators.registerUserValidator,authController.registerUser)
 router.post('/login',validators.loginUserValidator,authController.loginUser)
 router.get('/me',authMiddleware.authMiddleware,authController.getCurrentUser)
+router.post('/logout',authMiddleware.authMiddleware,authController.logoutUser)
 
 
 module.exports = router; 
