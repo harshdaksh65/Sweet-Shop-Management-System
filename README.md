@@ -112,21 +112,7 @@ The application will run on:
 - Login Page  
   ![Authentication](screenshots/login.png)
 
----
 
-## 🤖 My AI Usage
-
-### AI Tools Used
-- **ChatGPT, Github-copilot**
-
-### How I Used AI
-- Used ChatGPT to understand full-stack architecture and data flow
-- Assisted in debugging React and Express.js errors
-- Helped structure MongoDB schemas and API endpoints
-- Used copilot assistance to design and generate Jest test cases for backend authentication and sweets routes.
-
-### Reflection on AI Impact
-AI significantly improved my development speed by providing instant explanations and debugging help. It reduced development time, improved code clarity, and helped me focus more on implementing features rather than searching for solutions manually.
 
 ---
 
