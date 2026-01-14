@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from '../api/axiosconfig'
 import { AuthDataContext } from '../context/AuthContext'
 import { toast } from 'react-toastify'
+import TestCredentialsToast from '../Components/TestCredentialsToast'
 
 function Login() {
   const navigate = useNavigate()
@@ -41,6 +42,7 @@ function Login() {
 
   return (
     <div className="h-screen  flex items-center justify-center min-h-screen bg-gray-100">
+      <TestCredentialsToast />
       <div
         className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
       >
@@ -60,6 +62,7 @@ function Login() {
               className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               name="email"
               id="email"
+              placeholder='email'
             />
           </div>
           <div className="py-2">
@@ -69,6 +72,7 @@ function Login() {
               className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               name="username"
               id="username"
+              placeholder='username'
             />
           </div>
           <div className="py-2">
@@ -77,6 +81,7 @@ function Login() {
               type="password"
               name="password"
               id="password"
+              placeholder='password'
               className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
             />
           </div>

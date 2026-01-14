@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../api/axiosconfig'
+import TestCredentialsToast from '../Components/TestCredentialsToast'
 
 function Register() {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ function Register() {
 
   return (
     <div className="h-screen  flex items-center justify-center min-h-screen bg-gray-100">
+      <TestCredentialsToast />
       <div
         className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
       >
